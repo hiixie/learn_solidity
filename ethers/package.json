@@ -6,6 +6,7 @@
     "dotenv": "^16.0.3",
     "ethers": "^5.4",
     "prettier": "^2.5.1",
+    "prettier-plugin-solidity": "^1.1.2",
     "solc": "0.8.7-fixed"
   },
   "scripts": {
