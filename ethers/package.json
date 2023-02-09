@@ -1,0 +1,14 @@
+{
+  "name": "ethers-simple-storage-fcc",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ethers": "^5.4",
+    "prettier": "^2.5.1",
+    "solc": "0.8.7-fixed"
+  },
+  "scripts": {
+    "compile": "yarn solcjs --bin --abi --include-path node_modules/ --base-path . -o . SimpleStorage.sol"
+  }
+}
