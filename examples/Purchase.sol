@@ -5,12 +5,12 @@ contract Purchase {
     address payable public seller;
     address payable public buyer;
 
-    enum State { Created, Locked, Release, Inactive }
     // The state variable has a default value of the first member, `State.created`
+    enum State {Created, Locked, Release, Inactive}
     State public state;
 
     modifier condition(bool condition_) {
-        require(condition_);
+        require(condition_)        ;
         _;
     }
 
@@ -51,12 +51,11 @@ contract Purchase {
     // Check via multiplication that it wasn't an odd number.
     constructor() payable {
         seller = payable(msg.sender);
-        value = msg.value / 2;
-        if ((2 * value) != msg.value)
-            revert ValueNotEven();
+        value = msg.value/2;
+        if (2 * value != msg.value) revert ValueNotEven();
     }
 
-    /// Abort the purchase and reclaim the ether.
+     /// Abort the purchase and reclaim the ether.
     /// Can only be called by the seller before
     /// the contract is locked.
     function abort()
@@ -66,10 +65,8 @@ contract Purchase {
     {
         emit Aborted();
         state = State.Inactive;
-        // We use transfer here directly. It is
-        // reentrancy-safe, because it is the
-        // last call in this function and we
-        // already changed the state.
+        // We use transfer here directly. It is reentrancy-safe, because it is the
+        // last call in this function and we already changed the state.
         seller.transfer(address(this).balance);
     }
 
