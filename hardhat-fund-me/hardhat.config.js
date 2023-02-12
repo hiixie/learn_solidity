@@ -18,7 +18,8 @@ module.exports = {
         goerli: {
             url: GOERLI_RPC_URL,
             accounts: [PRIVATE_KEY],
-            chainId: 5
+            chainId: 5,
+            blockConfirmations: 6
         },
         // localhost chain for test, faster than testnet
         localhost: {
@@ -38,7 +39,8 @@ module.exports = {
         outputFile: "gas-report.txt",
         noColors: true,
         currency: "USD",
-        coinmarketcap: COINMARKETCAP_API_KEY
+        token: "ETH"
+        // coinmarketcap: COINMARKETCAP_API_KEY
     },
     namedAccounts: {
         deployer: {

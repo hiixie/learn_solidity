@@ -18,12 +18,20 @@
         "@nomiclabs/hardhat-etherscan": "^3.0.0",
         "@typechain/ethers-v5": "^10.1.0",
         "@typechain/hardhat": "^6.1.2",
-        "chai": "^4.2.0",
+        "chai": "^4.3.7",
         "dotenv": "^16.0.3",
-        "ethers": "^6.0.2",
+        "ethers": "5.5.3",
         "hardhat-deploy": "^0.11.23",
         "hardhat-gas-reporter": "^1.0.8",
         "solidity-coverage": "^0.8.0",
         "typechain": "^8.1.0"
+    },
+    "scripts": {
+        "test": "yarn hardhat test",
+        "test:staging": "yarn hardhat test --network goerli",
+        "lint": "yarn solhint 'contracts/*.sol'",
+        "lint:finx": "yarn solhint 'contracts/*.sol' --fix",
+        "format": "yarn prettier --write .",
+        "coverage": "yarn hardhat coverage"
     }
 }
