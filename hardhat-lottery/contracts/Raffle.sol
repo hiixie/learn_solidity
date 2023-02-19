@@ -46,7 +46,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
     uint256 private immutable i_interval;
 
     /* Events */
-    event RaffleEntter(address indexed player);
+    event RaffleEnter(address indexed player);
     event RequestedRaffleWinner(uint256 requestId);
     event WinnerPicked(address indexed winner);
 
@@ -84,7 +84,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
         }
         s_players.push(payable(msg.sender));
         // Whenever we edit a dynamic data structures we want to emit an event
-        emit RaffleEntter(msg.sender);
+        emit RaffleEnter(msg.sender);
     }
 
     /**
@@ -98,7 +98,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
      */
     function checkUpkeep(
         bytes memory /* checkData */
-    ) public view override returns (bool upkeepNeeded, bytes memory /* performData */) {
+    ) public view override returns (bool upkeepNeeded, bytes memory performData) {
         bool isOpen = (RaffleState.OPEN == s_raffleState);
         bool timePassed = ((block.timestamp - s_lastTimeStamp) > i_interval);
         bool hasPlayers = (s_players.length > 0);
